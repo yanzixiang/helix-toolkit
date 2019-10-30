@@ -15,7 +15,6 @@ namespace BackgroundUpdateDemo
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
-    using System.Threading.Tasks;
     using System.Windows.Media.Media3D;
     using System.Windows.Threading;
 
@@ -29,7 +28,6 @@ namespace BackgroundUpdateDemo
     [Example(null, "Updates the visual model in a background thread.")]
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private CancellationTokenSource source;
 
         Material mat2 = MaterialHelper.CreateMaterial(Colors.Red);
 

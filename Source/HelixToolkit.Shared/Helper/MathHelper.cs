@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+#if !NET35
 using System.Threading.Tasks;
+#endif
 #if SHARPDX
 using Vector2 = SharpDX.Vector2;
 using DoubleOrSingle = System.Single;
@@ -24,6 +26,7 @@ namespace HelixToolkit.Wpf
     /// </summary>
     public static class MathHelper
     {
+#if !NET35
         /// <summary>
         /// Generates the noise map.
         /// From https://stackoverflow.com/questions/8659351/2d-perlin-noise
@@ -77,8 +80,7 @@ namespace HelixToolkit.Wpf
             }
             result = data;
         }
-
-
+#endif
     }
     /// <summary>
     /// implements improved Perlin noise in 2D. 

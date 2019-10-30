@@ -78,7 +78,7 @@ namespace HelixToolkit.Wpf
 
                         break;
                     }
-
+#if !NET35
                 case ".obj":
                     {
                         var r = new ObjReader(dispatcher) { DefaultMaterial = this.DefaultMaterial, Freeze = freeze };
@@ -92,7 +92,7 @@ namespace HelixToolkit.Wpf
                         model = r.ReadZ(path);
                         break;
                     }
-
+#endif
                 case ".stl":
                     {
                         var r = new StLReader(dispatcher) { DefaultMaterial = this.DefaultMaterial, Freeze = freeze };
@@ -106,12 +106,14 @@ namespace HelixToolkit.Wpf
                         model = r.Read(path);
                         break;
                     }
+#if !NET35
                 case ".ply":
                     {
                         var r = new PlyReader(dispatcher) { DefaultMaterial = this.DefaultMaterial, Freeze = freeze };
                         model = r.Read(path);
                         break;
                     }
+#endif
                 default:
                     throw new InvalidOperationException("File format not supported.");
             }

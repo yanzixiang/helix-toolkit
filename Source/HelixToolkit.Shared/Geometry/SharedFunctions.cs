@@ -38,7 +38,9 @@ namespace HelixToolkit.Wpf
         /// <param name="first"></param>
         /// <param name="second"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static Vector3D CrossProduct(ref Vector3D first, ref Vector3D second)
         {
 #if SHARPDX
@@ -47,8 +49,9 @@ namespace HelixToolkit.Wpf
             return Vector3D.CrossProduct(first, second);
 #endif
         }
-
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static Vector3D CrossProduct(Vector3D first, Vector3D second)
         {
 #if SHARPDX
@@ -64,7 +67,9 @@ namespace HelixToolkit.Wpf
         /// <param name="first"></param>
         /// <param name="second"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static DoubleOrSingle DotProduct(ref Vector3D first, ref Vector3D second)
         {
             return first.X * second.X + first.Y * second.Y + first.Z * second.Z;
@@ -76,7 +81,9 @@ namespace HelixToolkit.Wpf
         /// <param name="first"></param>
         /// <param name="second"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static DoubleOrSingle DotProduct(ref Vector first, ref Vector second)
         {
             return first.X * second.X + first.Y * second.Y;
@@ -86,7 +93,9 @@ namespace HelixToolkit.Wpf
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static DoubleOrSingle LengthSquared(ref Vector3D vector)
         {
             return vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z;
@@ -96,7 +105,9 @@ namespace HelixToolkit.Wpf
         /// </summary>
         /// <param name="vector">The vector.</param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static DoubleOrSingle LengthSquared(ref Vector vector)
         {
             return vector.X * vector.X + vector.Y * vector.Y;
@@ -106,7 +117,9 @@ namespace HelixToolkit.Wpf
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static DoubleOrSingle Length(ref Vector3D vector)
         {
             return (DoubleOrSingle)Math.Sqrt(LengthSquared(ref vector));
@@ -118,7 +131,9 @@ namespace HelixToolkit.Wpf
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static System.Windows.Media.Media3D.Point3D ToPoint3D(ref Vector3D vector)
         {
             return new System.Windows.Media.Media3D.Point3D(vector.X, vector.Y, vector.Z);
@@ -128,7 +143,9 @@ namespace HelixToolkit.Wpf
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static System.Windows.Media.Media3D.Vector3D ToVector3D(ref Vector3D vector)
         {
             return new System.Windows.Media.Media3D.Vector3D(vector.X, vector.Y, vector.Z);

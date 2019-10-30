@@ -321,6 +321,81 @@ namespace HelixToolkit.Wpf
             }
         }
 
+#if NET35
+        /// <summary>
+        /// Creates the text material.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <param name="createElement">The create element.</param>
+        /// <param name="background">The background.</param>
+        /// <param name="elementMap">The element map.</param>
+        /// <param name="elementPositions">The element positions.</param>
+        /// <returns>A text material.</returns>
+        public static Material CreateTextMaterial(
+            IEnumerable<SpatialTextItem> items,
+            Func<string, FrameworkElement> createElement,
+            Brush background,
+            out Dictionary<string, FrameworkElement> elementMap,
+            out Dictionary<FrameworkElement, Rect> elementPositions)
+        {
+            var panel = new WrapPanel();
+            elementMap = new Dictionary<string, FrameworkElement>();
+            double maxWidth = 16;
+            foreach (var item in items)
+            {
+                if (elementMap.ContainsKey(item.Text))
+                {
+                    continue;
+                }
+
+                var e = createElement(item.Text);
+                e.Measure(new Size(2048, 2048));
+                maxWidth = Math.Max(maxWidth, e.DesiredSize.Width);
+                elementMap[item.Text] = e;
+                panel.Children.Add(e);
+            }
+
+            var pw = (int)Math.Ceiling(OptimizeSize(panel, maxWidth, 1024));
+            var ph = (int)Math.Ceiling(Math.Min(pw, panel.ActualHeight));
+
+            elementPositions = new Dictionary<FrameworkElement, Rect>();
+            foreach (FrameworkElement element in panel.Children)
+            {
+                var loc = element.TranslatePoint(new Point(0, 0), panel);
+                double x = (int)Math.Floor(loc.X);
+                double y = (int)Math.Floor(loc.Y);
+                double x2 = (int)Math.Ceiling(loc.X + element.RenderSize.Width);
+                double y2 = (int)Math.Ceiling(loc.Y + element.RenderSize.Height);
+                elementPositions[element] = new Rect(x / pw, y / ph, (x2 - x) / pw, (y2 - y) / ph);
+            }
+
+            // Create the bitmap
+            var rtb = new RenderTargetBitmap(pw, ph, 96, 96, PixelFormats.Pbgra32);
+            rtb.Render(panel);
+            rtb.Freeze();
+            var ib = new ImageBrush(rtb)
+            {
+                Stretch = Stretch.Fill,
+                ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
+                Viewbox = new Rect(0, 0, 1, 1),
+                ViewportUnits = BrushMappingMode.Absolute,
+                Viewport = new Rect(0, 0, 1, 1),
+                TileMode = TileMode.None,
+                AlignmentX = AlignmentX.Left,
+                AlignmentY = AlignmentY.Top
+            };
+
+            if (background != null && !background.Equals(Brushes.Transparent))
+            {
+                var mg = new MaterialGroup();
+                mg.Children.Add(new DiffuseMaterial(Brushes.Black));
+                mg.Children.Add(new EmissiveMaterial(ib));
+                return mg;
+            }
+
+            return new DiffuseMaterial(ib) { Color = Colors.White };
+        }
+
         /// <summary>
         /// Creates the text material.
         /// </summary>
@@ -332,6 +407,81 @@ namespace HelixToolkit.Wpf
         /// <returns>A text material.</returns>
         public static Material CreateTextMaterial(
             IEnumerable<TextItem> items,
+            Func<string, FrameworkElement> createElement,
+            Brush background,
+            out Dictionary<string, FrameworkElement> elementMap,
+            out Dictionary<FrameworkElement, Rect> elementPositions)
+        {
+            var panel = new WrapPanel();
+            elementMap = new Dictionary<string, FrameworkElement>();
+            double maxWidth = 16;
+            foreach (var item in items)
+            {
+                if (elementMap.ContainsKey(item.Text))
+                {
+                    continue;
+                }
+
+                var e = createElement(item.Text);
+                e.Measure(new Size(2048, 2048));
+                maxWidth = Math.Max(maxWidth, e.DesiredSize.Width);
+                elementMap[item.Text] = e;
+                panel.Children.Add(e);
+            }
+
+            var pw = (int)Math.Ceiling(OptimizeSize(panel, maxWidth, 1024));
+            var ph = (int)Math.Ceiling(Math.Min(pw, panel.ActualHeight));
+
+            elementPositions = new Dictionary<FrameworkElement, Rect>();
+            foreach (FrameworkElement element in panel.Children)
+            {
+                var loc = element.TranslatePoint(new Point(0, 0), panel);
+                double x = (int)Math.Floor(loc.X);
+                double y = (int)Math.Floor(loc.Y);
+                double x2 = (int)Math.Ceiling(loc.X + element.RenderSize.Width);
+                double y2 = (int)Math.Ceiling(loc.Y + element.RenderSize.Height);
+                elementPositions[element] = new Rect(x / pw, y / ph, (x2 - x) / pw, (y2 - y) / ph);
+            }
+
+            // Create the bitmap
+            var rtb = new RenderTargetBitmap(pw, ph, 96, 96, PixelFormats.Pbgra32);
+            rtb.Render(panel);
+            rtb.Freeze();
+            var ib = new ImageBrush(rtb)
+            {
+                Stretch = Stretch.Fill,
+                ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
+                Viewbox = new Rect(0, 0, 1, 1),
+                ViewportUnits = BrushMappingMode.Absolute,
+                Viewport = new Rect(0, 0, 1, 1),
+                TileMode = TileMode.None,
+                AlignmentX = AlignmentX.Left,
+                AlignmentY = AlignmentY.Top
+            };
+
+            if (background != null && !background.Equals(Brushes.Transparent))
+            {
+                var mg = new MaterialGroup();
+                mg.Children.Add(new DiffuseMaterial(Brushes.Black));
+                mg.Children.Add(new EmissiveMaterial(ib));
+                return mg;
+            }
+
+            return new DiffuseMaterial(ib) { Color = Colors.White };
+        }
+#endif
+
+        /// <summary>
+        /// Creates the text material.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <param name="createElement">The create element.</param>
+        /// <param name="background">The background.</param>
+        /// <param name="elementMap">The element map.</param>
+        /// <param name="elementPositions">The element positions.</param>
+        /// <returns>A text material.</returns>
+        public static Material CreateTextMaterial(
+            IEnumerable<BillboardTextItem> items,
             Func<string, FrameworkElement> createElement,
             Brush background,
             out Dictionary<string, FrameworkElement> elementMap,

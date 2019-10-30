@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{A710CED9-33A6-42F1-8A09-55FEC57B6460}"
 EndProject
@@ -24,6 +24,12 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HelixToolkit.Shared", "HelixToolkit.Shared\HelixToolkit.Shared.shproj", "{4EE18E80-7609-4FFF-BD4B-F02728EC0688}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HelixToolkit.Wpf.Shared", "HelixToolkit.Wpf.Shared\HelixToolkit.Wpf.Shared.shproj", "{342788CD-C98C-4856-99F3-E38BCEACB2B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triangle.NET35", "..\..\Triangle.NET\Triangle.NET\Triangle\Triangle.NET35.csproj", "{F7907A0A-B75F-400B-9E78-BFAD00DB4D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DTools", "..\..\..\..\..\codeplex\3DTools\sourceCode\3DTools\3DTools\3DTools.csproj", "{5F603892-DE40-4246-A969-1C6717AFE35D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petzold.Media3D", "..\..\..\..\..\codeplex\geometryviz3d\sourceCode\Petzold.Media3D\Petzold.Media3D.csproj", "{BEBED159-4DB6-4550-8342-7F3607177B71}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -69,6 +75,18 @@ Global
 		{E86BB7C0-A453-4923-916C-1AA32FF068F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E86BB7C0-A453-4923-916C-1AA32FF068F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E86BB7C0-A453-4923-916C-1AA32FF068F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7907A0A-B75F-400B-9E78-BFAD00DB4D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7907A0A-B75F-400B-9E78-BFAD00DB4D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7907A0A-B75F-400B-9E78-BFAD00DB4D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7907A0A-B75F-400B-9E78-BFAD00DB4D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F603892-DE40-4246-A969-1C6717AFE35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F603892-DE40-4246-A969-1C6717AFE35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F603892-DE40-4246-A969-1C6717AFE35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F603892-DE40-4246-A969-1C6717AFE35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBED159-4DB6-4550-8342-7F3607177B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBED159-4DB6-4550-8342-7F3607177B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBED159-4DB6-4550-8342-7F3607177B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBED159-4DB6-4550-8342-7F3607177B71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

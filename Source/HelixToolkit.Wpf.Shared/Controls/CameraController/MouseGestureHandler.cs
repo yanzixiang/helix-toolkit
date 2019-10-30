@@ -313,7 +313,9 @@ namespace HelixToolkit.Wpf
             this.SetMouseDownPoint(e.CurrentPosition);
             this.LastPoint = this.MouseDownPoint;
             this.LastPoint3D = this.MouseDownPoint3D;
+#if !NET35
             this.ManipulationWatch.Restart();
+#endif
         }
 
         /// <summary>

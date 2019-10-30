@@ -14,7 +14,6 @@ namespace BuildingDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.DataAnnotations;
     using BrowsableAttribute = System.ComponentModel.BrowsableAttribute;
 
     public class KerbVisual3D : UIElement3D
@@ -33,9 +32,6 @@ namespace BuildingDemo
             this.Visual3DModel = this.kerbModel;
         }
 
-        [Category("Kerb properties")]
-        [Slidable(0.1, 1)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Width
         {
@@ -43,8 +39,6 @@ namespace BuildingDemo
             set { this.SetValue(WidthProperty, value); }
         }
 
-        [Slidable(0, 2)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Height
         {
@@ -58,8 +52,6 @@ namespace BuildingDemo
             set { this.SetValue(PositionsProperty, value); }
         }
 
-        [Slidable(0.1, 10)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Length
         {

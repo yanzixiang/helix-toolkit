@@ -16,8 +16,6 @@ namespace LightsDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools;
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

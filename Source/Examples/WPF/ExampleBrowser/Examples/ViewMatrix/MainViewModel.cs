@@ -10,8 +10,6 @@ namespace ViewMatrixDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools;
-
     public class MainViewModel : Observable
     {
         private Matrix3D projectionMatrix;

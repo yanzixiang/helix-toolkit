@@ -58,7 +58,7 @@ namespace ClothDemo
             while (true)
             {
                 double dt = 1.0 * watch.ElapsedTicks / Stopwatch.Frequency;
-                watch.Restart();
+                watch.Reset();
                 Flag.Update(dt);
             }
         }

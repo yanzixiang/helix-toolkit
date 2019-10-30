@@ -204,18 +204,30 @@ namespace HelixToolkit.Wpf
         /// <summary>
         /// The circle cache.
         /// </summary>
+#if NET35
+        private static readonly Dictionary<int, IList<Point>> CircleCache = new Dictionary<int, IList<Point>>();
+#else
         private static readonly ThreadLocal<Dictionary<int, IList<Point>>> CircleCache = new ThreadLocal<Dictionary<int, IList<Point>>>(() => new Dictionary<int, IList<Point>>());
-        /// <summary>
-        /// The closed circle cache.
-        /// </summary>
+#endif
+         /// <summary>
+         /// The closed circle cache.
+         /// </summary>
+#if NET35
+        private static readonly Dictionary<int, IList<Point>> ClosedCircleCache = new Dictionary<int, IList<Point>>();
+#else
         private static readonly ThreadLocal<Dictionary<int, IList<Point>>> ClosedCircleCache = new ThreadLocal<Dictionary<int, IList<Point>>>(() => new Dictionary<int, IList<Point>>());
+#endif
 #if !NETFX_CORE
         /// <summary>
         /// The unit sphere cache.
         /// </summary>
+#if NET35
+        private static readonly Dictionary<int, MeshGeometry3D> UnitSphereCache = new Dictionary<int, MeshGeometry3D>();
+#else
         private static readonly ThreadLocal<Dictionary<int, MeshGeometry3D>> UnitSphereCache = new ThreadLocal<Dictionary<int, MeshGeometry3D>>(() => new Dictionary<int, MeshGeometry3D>());
 #endif
-        #endregion Static and Const
+#endif
+#endregion Static and Const
 
 
         #region Variables and Properties
@@ -333,10 +345,10 @@ namespace HelixToolkit.Wpf
                 }
             }
         }
-        #endregion Variables and Properties
+#endregion Variables and Properties
 
 
-        #region Constructors
+#region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="MeshBuilder"/> class.
         /// </summary>
@@ -376,10 +388,10 @@ namespace HelixToolkit.Wpf
                 this.bitangents = new Vector3DCollection();
             }
         }
-        #endregion Constructors
+#endregion Constructors
 
 
-        #region Geometric Base Functions
+#region Geometric Base Functions
         /// <summary>
         /// Gets a circle section (cached).
         /// </summary>
@@ -397,18 +409,33 @@ namespace HelixToolkit.Wpf
         {
             IList<Point> circle = null;
             // If the circle can't be found in one of the two caches
+#if NET35
+            if ((!closed && !CircleCache.TryGetValue(thetaDiv, out circle)) ||
+                (closed && !ClosedCircleCache.TryGetValue(thetaDiv, out circle)))
+
+#else
             if ((!closed && !CircleCache.Value.TryGetValue(thetaDiv, out circle)) ||
                 (closed && !ClosedCircleCache.Value.TryGetValue(thetaDiv, out circle)))
+
+#endif
             {
                 circle = new PointCollection();
                 // Add to the cache
                 if (!closed)
                 {
+#if NET35
+                    CircleCache.Add(thetaDiv, circle);
+#else
                     CircleCache.Value.Add(thetaDiv, circle);
+#endif
                 }
                 else
                 {
+#if NET35
+                    ClosedCircleCache.Add(thetaDiv, circle);
+#else
                     ClosedCircleCache.Value.Add(thetaDiv, circle);
+#endif
                 }
                 // Determine the angle steps
                 var num = closed ? thetaDiv : thetaDiv - 1;
@@ -461,10 +488,19 @@ namespace HelixToolkit.Wpf
         /// </returns>
         private static MeshGeometry3D GetUnitSphere(int subdivisions)
         {
+#if NET35
+            if (UnitSphereCache.ContainsKey(subdivisions))
+            {
+                return UnitSphereCache[subdivisions];
+            }
+
+#else
             if (UnitSphereCache.Value.ContainsKey(subdivisions))
             {
                 return UnitSphereCache.Value[subdivisions];
             }
+
+#endif
 
             var mb = new MeshBuilder(false, false);
             mb.AddRegularIcosahedron(new Point3D(), 1, false);
@@ -480,18 +516,22 @@ namespace HelixToolkit.Wpf
                 mb.Positions[i] = SharedFunctions.ToPoint3D(ref v);
             }
             var mesh = mb.ToMesh();
+#if NET35
+            UnitSphereCache[subdivisions] = mesh;
+#else
             UnitSphereCache.Value[subdivisions] = mesh;
+#endif
             return mesh;
         }
 #endif
 
-        /// <summary>
-        /// Calculate the Mesh's Normals
-        /// </summary>
-        /// <param name="positions">The Positions.</param>
-        /// <param name="triangleIndices">The TriangleIndices.</param>
-        /// <param name="normals">The calcualted Normals.</param>
-        private static void ComputeNormals(Point3DCollection positions, Int32Collection triangleIndices, out Vector3DCollection normals)
+            /// <summary>
+            /// Calculate the Mesh's Normals
+            /// </summary>
+            /// <param name="positions">The Positions.</param>
+            /// <param name="triangleIndices">The TriangleIndices.</param>
+            /// <param name="normals">The calcualted Normals.</param>
+            private static void ComputeNormals(Point3DCollection positions, Int32Collection triangleIndices, out Vector3DCollection normals)
         {
             normals = new Vector3DCollection(positions.Count);
             for (int i = 0; i < positions.Count; i++)
@@ -714,10 +754,10 @@ namespace HelixToolkit.Wpf
                     break;
             }
         }
-        #endregion Geometric Base Functions
+#endregion Geometric Base Functions
 
 
-        #region Add Geometry
+#region Add Geometry
         /// <summary>
         /// Adds an arrow to the mesh.
         /// </summary>
@@ -1955,6 +1995,7 @@ namespace HelixToolkit.Wpf
                 this.AddCylinder((Point3D)points[edges[i]], (Point3D)points[edges[i + 1]], diameter, thetaDiv);
             }
         }
+#if !NET35
         /// <summary>
         /// Adds a polygon.
         /// </summary>
@@ -1979,6 +2020,7 @@ namespace HelixToolkit.Wpf
                 }
             }
         }
+#endif
         /// <summary>
         /// Adds a polygon.
         /// </summary>
@@ -3860,10 +3902,10 @@ namespace HelixToolkit.Wpf
                 }
             }
         }
-        #endregion Add Geometry
+#endregion Add Geometry
 
 
-        #region Helper Functions
+#region Helper Functions
         /// <summary>
         /// Appends the specified mesh.
         /// </summary>
@@ -4461,10 +4503,10 @@ namespace HelixToolkit.Wpf
                 this.Subdivide4();
             }
         }
-        #endregion Helper Functions
+#endregion Helper Functions
 
 
-        #region Exporter Functions
+#region Exporter Functions
 #if SHARPDX
         /// <summary>
         /// Generate a MeshGeometry3D from the generated Data.
@@ -4642,7 +4684,7 @@ namespace HelixToolkit.Wpf
             return mg;
         }
 #endif
-        #endregion Exporter Functions
+#endregion Exporter Functions
     }
 #pragma warning restore 0436
 }

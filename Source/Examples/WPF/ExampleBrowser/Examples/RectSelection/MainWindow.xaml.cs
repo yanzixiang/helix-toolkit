@@ -38,7 +38,7 @@ namespace RectSelection
         private IList<Visual3D> selectedVisuals;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null)
+        private void RaisePropertyChanged(string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
@@ -77,7 +77,7 @@ namespace RectSelection
         {
             get
             {
-                return selectedVisuals == null ? "" : string.Join("; ", selectedVisuals.Select(x => x.GetType().Name));
+                return selectedVisuals == null ? "" : string.Join("; ", selectedVisuals.Select(x => x.GetType().Name).ToArray());
             }
         }
 

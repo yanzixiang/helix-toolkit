@@ -108,9 +108,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Importers\LwoReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Importers\ModelImporter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Importers\ModelReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Importers\ObjReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Importers\OffReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Importers\PlyReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Importers\StLReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Importers\StudioReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MarkupExtensions\GradientExtension.cs" />

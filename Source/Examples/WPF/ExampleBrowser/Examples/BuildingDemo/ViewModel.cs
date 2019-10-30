@@ -8,8 +8,6 @@ namespace BuildingDemo
 {
     using System.Windows.Media.Media3D;
 
-    using PropertyTools;
-
     public class ViewModel : Observable
     {
         private object selectedObject;

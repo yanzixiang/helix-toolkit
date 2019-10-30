@@ -12,7 +12,6 @@ namespace BuildingDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.DataAnnotations;
     using BrowsableAttribute = System.ComponentModel.BrowsableAttribute;
 
     public class ChimneyVisual3D : UIElement3D
@@ -50,9 +49,6 @@ namespace BuildingDemo
             set { this.SetValue(TopPositionProperty, value); }
         }
 
-        [Category("Chimney properties")]
-        [Slidable(0, 20)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double BaseDiameter
         {
@@ -60,8 +56,6 @@ namespace BuildingDemo
             set { this.SetValue(BaseDiameterProperty, value); }
         }
 
-        [Slidable(0, 20)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double TopDiameter
         {
@@ -69,8 +63,6 @@ namespace BuildingDemo
             set { this.SetValue(TopDiameterProperty, value); }
         }
 
-        [Slidable(0, 100)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Height
         {
@@ -78,8 +70,6 @@ namespace BuildingDemo
             set { this.SetValue(HeightProperty, value); }
         }
 
-        [Slidable(1, 20)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public int Bands
         {

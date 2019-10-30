@@ -402,6 +402,7 @@ namespace HelixToolkit.Wpf
         /// </summary>
         private Adorner targetAdorner;
 
+#if !NET35
         /// <summary>
         /// The touch point in the last touch delta event
         /// </summary>
@@ -411,6 +412,7 @@ namespace HelixToolkit.Wpf
         /// The number of touch manipulators (fingers) in the last touch delta event
         /// </summary>
         private int manipulatorCount;
+#endif
 
         /// <summary>
         /// The zoom event handler.
@@ -467,7 +469,9 @@ namespace HelixToolkit.Wpf
             this.Focusable = true;
             this.FocusVisualStyle = null;
 
+#if !NET35
             this.IsManipulationEnabled = true;
+#endif
             this.RotataAroundClosestVertexComplexity = 5000;
 
             this.InitializeBindings();
@@ -1379,9 +1383,9 @@ namespace HelixToolkit.Wpf
         ///   <c>true</c> if [limit FPS]; otherwise, <c>false</c>.
         /// </value>
         public bool LimitFPS { set; get; } = true;
-        #region Private Variables
+#region Private Variables
         private TimeSpan prevTime;
-        #endregion
+#endregion
         /// <summary>
         /// Adds the specified move force.
         /// </summary>
@@ -1846,6 +1850,7 @@ namespace HelixToolkit.Wpf
             this.RaiseEvent(args);
         }
 
+#if !NET35
         /// <summary>
         /// Called when the <see cref="E:System.Windows.UIElement.ManipulationCompleted"/> event occurs.
         /// </summary>
@@ -1945,7 +1950,6 @@ namespace HelixToolkit.Wpf
 
             e.Handled = true;
         }
-
         /// <summary>
         /// Called when the <see cref="E:System.Windows.UIElement.ManipulationStarted"/> event occurs.
         /// </summary>
@@ -1961,6 +1965,7 @@ namespace HelixToolkit.Wpf
 
             e.Handled = true;
         }
+#endif
 
         /// <summary>
         /// Invoked when an unhandled MouseDown attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event.
@@ -1996,12 +2001,13 @@ namespace HelixToolkit.Wpf
                 this.changeLookAtHandler.Completed(new ManipulationEventArgs(p));
                 e.Handled = true;
             }
-
+#if !NET35
             if (e.SystemGesture == SystemGesture.TwoFingerTap)
             {
                 this.ZoomExtents();
                 e.Handled = true;
             }
+#endif
         }
 
         /// <summary>

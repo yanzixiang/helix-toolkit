@@ -47,8 +47,8 @@ namespace FlightsDemo
                 while (!r.EndOfStream)
                 {
                     var line = r.ReadLine().Trim();
-                    if (String.IsNullOrWhiteSpace(line))
-                        continue;
+                    //if (String.IsNullOrWhiteSpace(line))
+                    //    continue;
                     if (line.StartsWith("%") || line.StartsWith("//"))
                         continue;
                     var fields = line.Split(separator);

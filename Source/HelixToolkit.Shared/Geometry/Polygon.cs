@@ -55,7 +55,6 @@ namespace HelixToolkit.Wpf
                 this.points = value;
             }
         }
-
         /// <summary>
         /// Triangulate the polygon by using the sweep line algorithm
         /// </summary>

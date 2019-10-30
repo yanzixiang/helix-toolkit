@@ -13,7 +13,6 @@ namespace BuildingDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.DataAnnotations;
     using BrowsableAttribute = System.ComponentModel.BrowsableAttribute;
 
     public class HouseVisual3D : UIElement3D
@@ -41,8 +40,6 @@ namespace BuildingDemo
             this.Visual3DModel = model;
         }
 
-        [Category("House properties")]
-        [Slidable(0, 60)]
         [Browsable(true)]
         public double Width
         {
@@ -50,7 +47,6 @@ namespace BuildingDemo
             set { this.SetValue(WidthProperty, value); }
         }
 
-        [Slidable(0, 60)]
         [Browsable(true)]
         public double Length
         {
@@ -58,8 +54,6 @@ namespace BuildingDemo
             set { this.SetValue(LengthProperty, value); }
         }
 
-        [Slidable(0, 4)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double StoryHeight
         {
@@ -67,7 +61,6 @@ namespace BuildingDemo
             set { this.SetValue(StoryHeightProperty, value); }
         }
 
-        [Slidable(1, 8)]
         [Browsable(true)]
         public int Stories
         {
@@ -75,7 +68,6 @@ namespace BuildingDemo
             set { this.SetValue(StoriesProperty, value); }
         }
 
-        [Slidable(0, 60)]
         [Browsable(true)]
         public double RoofAngle
         {
@@ -83,8 +75,6 @@ namespace BuildingDemo
             set { this.SetValue(RoofAngleProperty, value); }
         }
 
-        [Slidable(0, 2)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double RoofThickness
         {
@@ -92,8 +82,6 @@ namespace BuildingDemo
             set { this.SetValue(RoofThicknessProperty, value); }
         }
 
-        [Slidable(0, 1)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double FloorThickness
         {

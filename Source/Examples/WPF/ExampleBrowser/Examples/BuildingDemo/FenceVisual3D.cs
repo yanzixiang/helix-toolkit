@@ -13,7 +13,6 @@ namespace BuildingDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.DataAnnotations;
     using BrowsableAttribute = System.ComponentModel.BrowsableAttribute;
 
     public class FenceVisual3D : UIElement3D
@@ -38,9 +37,6 @@ namespace BuildingDemo
             this.Visual3DModel = group;
         }
 
-        [Category("Fence properties")]
-        [Slidable(0.01, 0.2)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Diameter
         {
@@ -48,8 +44,6 @@ namespace BuildingDemo
             set { this.SetValue(DiameterProperty, value); }
         }
 
-        [Slidable(0, 2)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double Height
         {
@@ -63,8 +57,6 @@ namespace BuildingDemo
             set { this.SetValue(PositionsProperty, value); }
         }
 
-        [Slidable(0.01, 0.2)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double MeshSize
         {
@@ -72,8 +64,6 @@ namespace BuildingDemo
             set { this.SetValue(MeshSizeProperty, value); }
         }
 
-        [Slidable(0.2, 10)]
-        [FormatString("0.00")]
         [Browsable(true)]
         public double PoleDistance
         {

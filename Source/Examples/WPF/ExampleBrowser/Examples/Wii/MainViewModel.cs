@@ -251,7 +251,7 @@ namespace WiiDemo
                 }
 
                 double deltaTime = timer.ElapsedMilliseconds*0.001;
-                timer.Restart();
+                timer.Reset();
 
                 double newHeel = -90 + 180.0*(e.WiimoteState.AccelState.RawValues.X - 94)/(143 - 94);
                 double newTrim = -90 + 180.0*(e.WiimoteState.AccelState.RawValues.Y - 94)/(143 - 94);

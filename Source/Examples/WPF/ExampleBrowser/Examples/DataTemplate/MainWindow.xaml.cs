@@ -18,7 +18,6 @@ namespace DataTemplateDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.Wpf;
     using System.Windows.Media;
 
     /// <summary>
@@ -56,7 +55,7 @@ namespace DataTemplateDemo
                                      }
                              };
             this.DataContext = this;
-            this.AddElementCommand = new DelegateCommand(() =>
+            /*this.AddElementCommand = new DelegateCommand(() =>
             {
                 if (this.ObservableElements.Count % 3 == 1)
                 {
@@ -115,14 +114,14 @@ namespace DataTemplateDemo
                 model.Position = new Point3D(0, -3, this.ObservableElements.Count);
 
                 this.ObservableElements.Add(model);
-            });
+            });*/
         }
 
-        public DelegateCommand AddElementCommand { get; private set; }
-        public DelegateCommand AddElementsCommand { get; private set; }
-        public DelegateCommand AddUIElementCommand { get; private set; }
+        //public DelegateCommand AddElementCommand { get; private set; }
+        //public DelegateCommand AddElementsCommand { get; private set; }
+        //public DelegateCommand AddUIElementCommand { get; private set; }
 
-        public DelegateCommand DeleteElementCommand { get; private set; }
+        //public DelegateCommand DeleteElementCommand { get; private set; }
 
         /// <summary>
         /// Gets or sets the observable elements.

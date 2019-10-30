@@ -97,7 +97,7 @@ namespace WindDemo
         {
             double delta = watch.ElapsedMilliseconds * 0.001;
             RotationAngle += 360 * RotationSpeed / 60 * delta;
-            watch.Restart();
+            watch.Reset();
         }
 
         private void UpdateVisuals()

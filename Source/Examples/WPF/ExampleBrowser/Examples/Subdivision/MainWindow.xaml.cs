@@ -172,7 +172,7 @@ namespace SubdivisionDemo
             loop.Subdivide(this.Levels);
             long subDivisionTime = w.ElapsedMilliseconds;
             var mesh3 = loop.ToMesh3D();
-            w.Restart();
+            w.Reset();
             model3.Mesh = mesh3; // new Mesh3D(mesh3.Positions, mesh3.TriangleIndices);
             long meshGenerationTime = w.ElapsedMilliseconds;
             model3.Transform = new TranslateTransform3D(bounds.SizeX * 2.4, 0, 0);

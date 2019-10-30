@@ -18,8 +18,6 @@ namespace ViewportFeaturesDemo
 
     using HelixToolkit.Wpf;
 
-    using PropertyTools.Wpf;
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

@@ -142,7 +142,7 @@ namespace WiiDemo
             if (dt == 0)
                 dt = 0.01;
             totalTime += dt;
-            watch.Restart();
+            watch.Reset();
 
             integrator.TimeStep(dt);
             integrator.TransferPositions(Mesh);

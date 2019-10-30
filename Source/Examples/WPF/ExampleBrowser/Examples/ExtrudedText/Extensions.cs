@@ -117,7 +117,7 @@
             }
         }
 
-        public static IEnumerable<IList<Point[]>> GetTextOutlines(string text, string fontName, FontStyle fontStyle, FontWeight fontWeight, double fontSize)
+        public static List<List<Point[]>> GetTextOutlines(string text, string fontName, FontStyle fontStyle, FontWeight fontWeight, double fontSize)
         {
             var formattedText = new FormattedText(
                 text,

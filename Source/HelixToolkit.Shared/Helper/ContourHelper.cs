@@ -294,7 +294,9 @@ namespace HelixToolkit.Wpf
         /// The second side.
         /// </param>
         /// <returns>The new coordinate.</returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private static DoubleOrSingle CalculatePoint(DoubleOrSingle firstPoint, DoubleOrSingle secondPoint, DoubleOrSingle firstSide, DoubleOrSingle secondSide)
         {
             return firstPoint - (firstSide * (secondPoint - firstPoint) / (secondSide - firstSide));
@@ -370,7 +372,9 @@ namespace HelixToolkit.Wpf
         /// <param name="index0">The first index.</param>
         /// <param name="index1">The second index.</param>
         /// <returns>The interpolated position.</returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private Point3D CreateNewPosition(int index0, int index1)
         {
             var firstPoint = this.points[index0];
@@ -389,7 +393,9 @@ namespace HelixToolkit.Wpf
         /// <param name="index0">The first index.</param>
         /// <param name="index1">The second index.</param>
         /// <returns>The interpolated vector.</returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private Vector3D CreateNewNormal(int index0, int index1)
         {
             var firstPoint = this.normals[index0];
@@ -408,7 +414,9 @@ namespace HelixToolkit.Wpf
         /// <param name="index0">The first index.</param>
         /// <param name="index1">The second index.</param>
         /// <returns>The interpolated texture coordinate.</returns>
+#if !NET35
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private Point CreateNewTexture(int index0, int index1)
         {
             var firstTexture = this.textures[index0];
